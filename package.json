@@ -1,0 +1,23 @@
+{
+  "name": "maze-solver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "maze",
+    "node",
+    "js",
+    "javascript",
+    "problem",
+    "solver"
+  ],
+  "author": "MS.Kashef",
+  "license": "ISC",
+  "dependencies": {
+    "@mskashef/dfs-search": "^1.0.4",
+    "canvas": "^2.8.0"
+  }
+}
