@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aMaze</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script src="maze.js"></script>
+    <script>
+      const w = 20, h = 10;
+      const m = new Maze(w, h);
+      m.renderConf.gap = 0;
+      m.renderConf.containerId = 'canvas'
+      m.addStartPoint([0, 0]);
+      m.addGoal([w - 1, h - 1]);
+      m.showAnswer();
+      m.hideAnswer();      
+    </script>
+    <script src="generateRandomMaze.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

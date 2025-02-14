@@ -1,22 +1,14 @@
 const fs = require('fs');
 const {mazeToCanvas} = require('./mazeToCanvas');
+const { generateRandomMaze } = require('./randomMaze')
 
-const maze = [
-    [1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,1,0,0,0,0,0,1],
-    [1,0,1,1,1,0,1,1,0,0,1,0,1,1,1,0,0,0,0,1,1,1,0,1],
-    [1,0,0,0,1,1,1,0,0,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1],
-    [1,1,1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1],
-    [1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,1,0,1,1,1,1,0,1],
-    [1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1],
-    [1,0,1,1,1,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,0,1,1],
-    [1,0,0,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,1,0,1,1,1,1],
-    [1,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1],
-    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-]
+const w = 251;
+const h = 271;
 
-const startPosition = [0,1]
-const endPosition = [10, 22]
+const maze = generateRandomMaze(w, h)
+
+const startPosition = [1,1]
+const endPosition = [w - 2, h - 2]
 
 const positionToString = pos => {
     return `${pos[0]},${pos[1]}`
@@ -86,12 +78,12 @@ function solveMazeBFS (maze, startPosition, endPosition) {
     }
 }
 
-let res = solveMazeBFS(maze, startPosition, endPosition)
-while (res) {
-    let pos = res.self 
-    maze[pos[0]][pos[1]] = 2
-    res = res.parent
-}
-const canvas = mazeToCanvas(maze);
+// let res = solveMazeBFS(maze, startPosition, endPosition)
+// while (res) {
+//     let pos = res.self 
+//     maze[pos[0]][pos[1]] = 2
+//     res = res.parent
+// }
+const canvas = mazeToCanvas(maze, 50, 0);
 const buffer = canvas.toBuffer('image/png')
 fs.writeFileSync('./image.png', buffer)
